@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_physics/ball_painter.dart';
@@ -104,6 +105,8 @@ with SingleTickerProviderStateMixin {
   double gravity = 1400.0;
  bool _isIniatialized = false;
 
+ bool _isDragging = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -118,4 +121,4 @@ with SingleTickerProviderStateMixin {
      ),
     );
   }
-}
+}*/

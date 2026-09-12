@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_physics/bouncing_ball.dart';
-import 'package:flutter_physics/remote_car.dart';
+import 'package:flutter_physics/flutter_playground/reflex_game.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RemoteCar()
+      home: ReflexGame()
     );
   }
 }

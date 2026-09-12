@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'car_painter.dart';
@@ -179,4 +180,4 @@ class _RemoteCarState extends State<RemoteCar>
       ),
     );
   }
-}
+}*/

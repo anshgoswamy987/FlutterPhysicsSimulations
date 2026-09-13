@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class ReflexGame extends StatefulWidget {
   const ReflexGame({super.key});
@@ -11,6 +12,22 @@ class ReflexGame extends StatefulWidget {
 
 class _ReflexGameState extends State<ReflexGame> {
   final Random _random = Random();
+  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    
+  }
+
+  void _playSound(String fileName)async{
+    try{
+    await _audioPlayer.stop();
+    await _audioPlayer.play(AssetSource('audio/$fileName'));
+  }catch(e){
+    debugPrint("Audio error:$e");
+  }
+  }
 
   // Orb properties 
   double orbX = 0;
@@ -35,9 +52,11 @@ class _ReflexGameState extends State<ReflexGame> {
   }
 
   void _handleMiss(Size screenSize) {
+    _orbTimer?.cancel();
     setState(() {
       misses++;
       if (misses >= 3) {
+        _playSound('gameover.mp3');
         level = 1;
         score = 0;
         misses = 0;
@@ -63,6 +82,7 @@ class _ReflexGameState extends State<ReflexGame> {
   @override
   void dispose() {
     _orbTimer?.cancel();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -88,6 +108,7 @@ class _ReflexGameState extends State<ReflexGame> {
     final bool isHit = (dx * dx + dy * dy) <= (orbRadius * orbRadius);
 
     if (isHit) {
+      _playSound('pop.mp3');
       _orbTimer?.cancel();
 
       setState(() {
